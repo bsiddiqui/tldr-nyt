@@ -14,4 +14,24 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require angular
+#= require angular-resource
+#= require angular-route
+#= require_self
+#= require_tree ./controllers/
 #= require_tree .
+
+@tldr = angular
+  .module('tldr', [
+    "ngRoute"
+  ])
+  .config(['$locationProvider', '$routeProvider', '$httpProvider',
+  ($locationProvider, $routeProvider, $httpProvider) ->
+
+    $locationProvider.html5Mode(true)
+
+    $routeProvider
+      .when '/',
+        templateUrl: '/partials/home.html'
+      .otherwise
+        redirectTo: '/'
+  ])

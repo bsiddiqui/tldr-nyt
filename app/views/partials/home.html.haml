@@ -1,0 +1,9 @@
+.home-container{ ng_controller: "ArticleCtrl" }
+  .article{ ng_repeat: "article in articles"}
+    .title
+      {{article.title}}
+    %ul.summary
+      %li {{article.data.summary[0]}}
+      %li {{article.data.summary[1]}}
+      %li {{article.data.summary[2]}}
+    %br

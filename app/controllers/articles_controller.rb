@@ -33,6 +33,7 @@ class ArticlesController < ApplicationController
     @tldr = []
     @items.each do |item|
       if item.url.match(/\.html/i)
+        puts item
         response = HTTParty.get(
           "http://clipped.me/algorithm/clippedapi.php?url=#{item.url}"
         )
@@ -45,5 +46,4 @@ class ArticlesController < ApplicationController
       end
     end
   end
-
 end

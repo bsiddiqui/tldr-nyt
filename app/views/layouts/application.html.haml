@@ -1,0 +1,10 @@
+!!!
+%html{ 'ng-app' => "tldr"}
+  %head
+    %title Tldrnyt
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.2.1/lodash.min.js"
+    = csrf_meta_tags
+  %body
+    = yield
