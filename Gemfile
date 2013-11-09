@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 1.2'
 # gem 'capistrano', group: :development
 
 
+gem 'angularjs-rails'
 gem 'httparty'
 gem 'activerecord-postgres-hstore'
 gem "times_wire", "~> 0.9.0"
