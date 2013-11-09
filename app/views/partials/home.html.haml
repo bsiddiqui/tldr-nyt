@@ -1,9 +1,6 @@
 .home-container{ ng_controller: "ArticleCtrl" }
   .article{ ng_repeat: "article in articles"}
-    .title
+    %a.title{ ng_href: "{{article.url}}", target: "_blank" }
       {{article.title}}
-    %ul.summary
-      %li {{article.data.summary[0]}}
-      %li {{article.data.summary[1]}}
-      %li {{article.data.summary[2]}}
-    %br
+    .summary{ ng_repeat: "summary in article.data.summary"}
+      {{"-" + summary}}

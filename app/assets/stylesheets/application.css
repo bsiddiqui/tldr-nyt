@@ -11,3 +11,27 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+  font-family: 'Noto Serif', serif;
+  color: #333332;
+}
+
+.header {
+  text-align: center;
+  font-size: 25px;
+}
+
+.title {
+}
+
+.article {
+  margin: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+}

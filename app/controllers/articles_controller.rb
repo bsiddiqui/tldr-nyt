@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
 
   def get_recent
     TimesWire::Base.api_key = "427be2cf8f9f4c62a6c48296717755bf:14:68384323"
-    @items = TimesWire::Item.latest('nyt')
+    @items = TimesWire::Item.section('nyt', 'world')
 
     @tldr = []
     @items.each do |item|
@@ -41,6 +41,7 @@ class ArticlesController < ApplicationController
         Article.create(
           title: response["title"],
           source: response["source"],
+          url: item.url,
           data: { summary: response["summary"] }
         )
       end
