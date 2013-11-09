@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 1.2'
 # gem 'capistrano', group: :development
 
 
+gem 'httparty'
+gem 'activerecord-postgres-hstore'
 gem "times_wire", "~> 0.9.0"
 gem 'bootstrap-sass', '>= 3.0.0.0'
 gem 'figaro'
@@ -44,7 +46,7 @@ gem 'pg'
 gem 'unicorn'
 
 group :development do
-  gem 'better_errors'
+  # gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'html2haml'
   gem 'quiet_assets'
