@@ -1,2 +1,7 @@
 %h2.header TLDR NYT
-.articles-container{ ng_view: '' }
+.home-container{ ng_controller: "ArticleCtrl" }
+  .article{ ng_repeat: "article in articles"}
+    %a.title{ ng_href: "{{article.url}}", target: "_blank" }
+      {{article.title}}
+    .summary{ ng_repeat: "summary in article.data.summary"}
+      {{"-" + summary}}
