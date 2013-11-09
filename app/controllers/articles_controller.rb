@@ -40,12 +40,10 @@ class ArticlesController < ApplicationController
               "http://clipped.me/algorithm/clippedapi.php?url=#{item.url}"
             )
             response = JSON.parse(response)
-            Article.create(
+            Article.where(
               title: response["title"],
-              source: response["source"],
               url: item.url,
-              data: { summary: response["summary"] }
-            )
+            ).first_or_create
           end
         end
         render json: @articles
