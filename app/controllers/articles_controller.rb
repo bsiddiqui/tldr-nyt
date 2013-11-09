@@ -42,6 +42,8 @@ class ArticlesController < ApplicationController
             response = JSON.parse(response)
             Article.where(
               title: response["title"],
+              source: response["source"],
+              data: { summary: response["summary"] },
               url: item.url,
             ).first_or_create
           end
