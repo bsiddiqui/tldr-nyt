@@ -27,23 +27,28 @@ class ArticlesController < ApplicationController
   end
 
   def get_recent
-    TimesWire::Base.api_key = "427be2cf8f9f4c62a6c48296717755bf:14:68384323"
-    @items = TimesWire::Item.section('nyt', 'world')
+    respond_to do |format|
+      format.json do
+        TimesWire::Base.api_key = "427be2cf8f9f4c62a6c48296717755bf:14:68384323"
+        @items = TimesWire::Item.section('nyt', 'world')
 
-    @tldr = []
-    @items.each do |item|
-      if item.url.match(/\.html/i)
-        puts item
-        response = HTTParty.get(
-          "http://clipped.me/algorithm/clippedapi.php?url=#{item.url}"
-        )
-        response = JSON.parse(response)
-        Article.create(
-          title: response["title"],
-          source: response["source"],
-          url: item.url,
-          data: { summary: response["summary"] }
-        )
+        @tldr = []
+        @items.each do |item|
+          if item.url.match(/\.html/i)
+            puts item
+            response = HTTParty.get(
+              "http://clipped.me/algorithm/clippedapi.php?url=#{item.url}"
+            )
+            response = JSON.parse(response)
+            Article.create(
+              title: response["title"],
+              source: response["source"],
+              url: item.url,
+              data: { summary: response["summary"] }
+            )
+          end
+        end
+        render json: @articles
       end
     end
   end
